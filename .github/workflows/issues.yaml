@@ -4,5 +4,5 @@ jobs:
   DescribeIssue:
     runs-on: ubuntu-latest
     steps:
-      name: Display description
-      run: echo Hello issue
+      - name: Display description
+        run: echo Hello issue
