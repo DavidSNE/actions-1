@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Display description
-        run: echo Issue description ${{github.issue.body}}
+        run: echo Issue description ${{issue.body}}
