@@ -5,7 +5,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Build
-        run: npm build
+        run: npm run build
       - name: Publish
         uses: actions/upload-artifact@v3
         with:
