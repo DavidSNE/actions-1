@@ -32,4 +32,4 @@ jobs:
       - name: Display
         run: ls
       - name: Display filename
-        run: echo 'The filename is ${{ needs.OutputsExample.outputs.my-value}}'
+        run: echo 'The filename is ${{ needs.OutputExample.outputs.my-value}}'
