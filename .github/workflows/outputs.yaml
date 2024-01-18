@@ -5,7 +5,11 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Build
+<<<<<<< HEAD
         run: npm run build
+=======
+        run: npm build
+>>>>>>> ce65d461c880343c01972a456c3578d1bdbc480a
       - name: Publish
         uses: actions/upload-artifact@v3
         with:
@@ -15,5 +19,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist-files
+<<<<<<< HEAD
       - name: Display
+=======
+>>>>>>> ce65d461c880343c01972a456c3578d1bdbc480a
         run: ls
