@@ -1,0 +1,19 @@
+name: outputs
+on: [push]
+jobs:
+  OutputExample:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Build
+        run: npm build
+      - name: Publish
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
+      - name: Deploy
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+      - name: Display
+        run: ls
