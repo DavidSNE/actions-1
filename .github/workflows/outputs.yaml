@@ -3,6 +3,8 @@ on: [push]
 jobs:
   OutputExample:
     runs-on: "ubuntu-latest"
+    outputs:
+      my-value: ${{ steps.publishId.outputs.my-value}}
     steps:
       - name: Get Code
         uses: actions/checkout@v4
@@ -10,14 +12,25 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Publish filename
+        id: publishId
+        run: find dist/assets/*.js -type f -execdir echo 'my-value={}' >> $GITHUB_OUTPUT ';'
       - name: Publish
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
           path: dist
+
+  DisplayFiles:
+    - needs: OutputExample
+    - runs-on: "ubuntu-latest"
+    - steps:
       - name: Deploy
         uses: actions/download-artifact@v3
         with:
           name: dist-files
       - name: Display
         run: ls
+      - name: Display filename
+        needs:
+        run: echo 'The filename is ${{ needs.OutputsExample.outputs.my-value}}'
